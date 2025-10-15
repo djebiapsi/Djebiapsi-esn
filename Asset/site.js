@@ -132,4 +132,28 @@ function setupNavbarTransparency() {
 
 setupNavbarTransparency();
 
+// Rotation des mots dans le hero tagline
+function setupRotatingWords() {
+  const words = document.querySelectorAll('.rotating-word');
+  if (words.length === 0) return;
+  
+  let currentIndex = 0;
+  
+  function rotateWord() {
+    // Retirer la classe visible du mot actuel
+    words[currentIndex].classList.remove('is-visible');
+    
+    // Passer au mot suivant
+    currentIndex = (currentIndex + 1) % words.length;
+    
+    // Ajouter la classe visible au nouveau mot
+    words[currentIndex].classList.add('is-visible');
+  }
+  
+  // Démarrer la rotation toutes les 3 secondes
+  setInterval(rotateWord, 3000);
+}
+
+setupRotatingWords();
+
 
