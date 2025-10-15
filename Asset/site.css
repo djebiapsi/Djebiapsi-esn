@@ -61,6 +61,7 @@
 @media (max-width: 900px) {
   .nav-list { display: none; }
   .nav-list.open { display: flex; flex-direction: column; gap: var(--spacing-sm); position: absolute; right: var(--spacing-md); top: 64px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); box-shadow: var(--shadow-medium); padding: var(--spacing-md); }
+  .site-header:not(.is-solid) .nav-list.open { background: rgba(255, 255, 255, 0.5); }
 }
 @media (min-width: 901px) {
   .nav-toggle { display: none; }
@@ -126,8 +127,8 @@
 /* Hero fullscreen tri-bandes */
 .hero-split {
   display: flex;
-  height: 100svh; /* prend en compte les barres mobiles */
-  min-height: 100vh;
+  height: 100dvh; /* iOS Safari dynamic viewport */
+  min-height: 100svh;
   position: relative;
 }
 .hero-split-panel {
