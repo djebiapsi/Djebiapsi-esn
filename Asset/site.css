@@ -118,9 +118,9 @@
 .card:hover { transform: translateY(-6px); }
 
 /* Logos confiance */
-.logos-trust { margin-top: var(--spacing-xl); text-align: center; }
+.logos-trust { margin-bottom: var(--spacing-xl); text-align: center; }
 .logo-list { list-style: none; display: flex; justify-content: center; align-items: center; gap: clamp(1rem, 6vw, 4rem); margin-top: var(--spacing-md); flex-wrap: wrap; }
-.logo-list img { height: clamp(56px, 8vw, 96px); width: auto; filter: grayscale(100%); opacity: .9; transition: filter var(--transition-fast), opacity var(--transition-fast), transform var(--transition-fast); }
+.logo-list img { height: clamp(56px, 8vw, 96px); width: auto;  opacity: .9; transition: filter var(--transition-fast), opacity var(--transition-fast), transform var(--transition-fast); }
 .logo-list img:hover { filter: none; opacity: 1; transform: translateY(-2px); }
 .logos-caption { color: var(--color-text-muted); margin-top: var(--spacing-sm); }
 
