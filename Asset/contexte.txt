@@ -1,0 +1,21 @@
+Crée un site vitrine pour mon ESN, avec un design sobre, élégant et professionnel, reflétant mon expertise en Data, IA, BI et développement web. Le site doit être Mobile First, mais s’adapter parfaitement aux écrans PC.
+
+La page d’accueil doit mettre tout de suite dans le bain avec un hero et avec un slogan clair :
+
+“Data, IA & BI. Accédez à mon expertise.”
+
+Le site contiendra les sections suivantes :
+
+À propos / profil : description brève + compétences clés (data, BI, machine learning, développement web), en t'inspirant de mon CV.
+
+Services : cartes animées pour chaque service avec le detail de ce que ca comprend et le fonctionnement (Ressources humaines (avec mon appui), Team as service sur mesure, Réalisation de projet...).
+
+Illustrations & visuels : utiliser des illustrations sur internet, intégrées de manière harmonieuse avec le design et utilise mon image aussi pour parler de moi.
+
+Contact / CTA : mes contact, numéro de téléphone, linkedin, mail.
+
+Les animations doivent être subtiles et modernes : fade-in, slide-up, hover scale, scroll animations. Le site doit refléter mon expertise technique en JS et CSS, être fluide, rapide et responsive.
+
+Palette de couleurs : cf charte_graphique.css.
+
+Le résultat doit être un site vitrine convaincant, moderne, lisible et mobile first, qui inspire confiance et expertise auprès de clients potentiels B2B.

@@ -1,0 +1,461 @@
+/* ============================================
+   LUXURY COLOR - CHARTE GRAPHIQUE CSS
+   Style: Luxury Corporate Old Money
+   ============================================ */
+
+/* === IMPORTATION DES POLICES === */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+/* === VARIABLES CSS === */
+:root {
+  /* Palette de couleurs */
+  --color-pale: #E8D9C4;
+  --color-gold: #785D32;
+  --color-rough: #3E160C;
+  --color-navy: #050A30;
+  
+  /* Variations de couleurs */
+  --color-pale-light: #F5EDE0;
+  --color-pale-dark: #D4C5B0;
+  --color-gold-light: #9A7A4A;
+  --color-gold-dark: #5A4524;
+  --color-rough-light: #5A2415;
+  --color-navy-light: #0D1548;
+  
+  /* Couleurs fonctionnelles */
+  --color-background: #FAFAF8;
+  --color-surface: #FFFFFF;
+  --color-text-primary: var(--color-navy);
+  --color-text-secondary: var(--color-rough);
+  --color-text-muted: #6B6B6B;
+  --color-accent: var(--color-gold);
+  --color-border: var(--color-pale-dark);
+  
+  /* Typographie */
+  --font-primary: 'Playfair Display', serif;
+  --font-secondary: 'Cormorant Garamond', serif;
+  --font-body: 'Montserrat', sans-serif;
+  
+  /* Tailles de police */
+  --font-size-hero: clamp(3rem, 8vw, 6rem);
+  --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+  --font-size-h2: clamp(2rem, 4vw, 3rem);
+  --font-size-h3: clamp(1.5rem, 3vw, 2.25rem);
+  --font-size-h4: clamp(1.25rem, 2.5vw, 1.75rem);
+  --font-size-h5: clamp(1.125rem, 2vw, 1.5rem);
+  --font-size-h6: clamp(1rem, 1.5vw, 1.25rem);
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+  --font-size-tiny: 0.75rem;
+  
+  /* Espacements */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2.5rem;
+  --spacing-xl: 4rem;
+  --spacing-xxl: 6rem;
+  
+  /* Ombres */
+  --shadow-subtle: 0 2px 8px rgba(5, 10, 48, 0.06);
+  --shadow-medium: 0 4px 16px rgba(5, 10, 48, 0.1);
+  --shadow-strong: 0 8px 32px rgba(5, 10, 48, 0.15);
+  --shadow-luxury: 0 12px 48px rgba(120, 93, 50, 0.12);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.4s ease;
+  --transition-slow: 0.6s ease;
+  
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+}
+
+/* === RESET & BASE === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: 1.7;
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === TYPOGRAPHIE === */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+}
+
+h5 {
+  font-size: var(--font-size-h5);
+}
+
+h6 {
+  font-size: var(--font-size-h6);
+}
+
+.hero-title {
+  font-size: var(--font-size-hero);
+  font-weight: 800;
+  line-height: 1;
+  font-family: var(--font-primary);
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-h4);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.02em;
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
+.lead-text {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  font-weight: 300;
+  color: var(--color-text-secondary);
+}
+
+.small-text {
+  font-size: var(--font-size-small);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-gold);
+}
+
+/* === BOUTONS === */
+.btn {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background-color: var(--color-gold);
+  color: var(--color-pale-light);
+  border-color: var(--color-gold);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-gold-dark);
+  border-color: var(--color-gold-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-gold);
+  color: var(--color-pale-light);
+}
+
+.btn-dark {
+  background-color: var(--color-navy);
+  color: var(--color-pale);
+  border-color: var(--color-navy);
+}
+
+.btn-dark:hover {
+  background-color: var(--color-navy-light);
+  border-color: var(--color-navy-light);
+}
+
+.btn-light {
+  background-color: var(--color-pale);
+  color: var(--color-navy);
+  border-color: var(--color-pale);
+}
+
+.btn-light:hover {
+  background-color: var(--color-pale-dark);
+  border-color: var(--color-pale-dark);
+}
+
+.btn-large {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: 1.125rem;
+}
+
+.btn-small {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: var(--font-size-small);
+}
+
+/* === CARTES === */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-medium);
+  border: 1px solid var(--color-border);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-luxury);
+  transform: translateY(-4px);
+}
+
+.card-luxury {
+  background: linear-gradient(135deg, var(--color-pale-light) 0%, var(--color-pale) 100%);
+  border: 2px solid var(--color-gold);
+}
+
+/* === CONTENEURS === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.container-wide {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.container-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* === SECTIONS === */
+.section {
+  padding: var(--spacing-xxl) 0;
+}
+
+.section-luxury {
+  background: linear-gradient(180deg, var(--color-pale-light) 0%, var(--color-pale) 100%);
+  position: relative;
+}
+
+.section-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+.section-dark {
+  background-color: var(--color-navy);
+  color: var(--color-pale);
+}
+
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4,
+.section-dark h5,
+.section-dark h6 {
+  color: var(--color-pale);
+}
+
+.section-dark p {
+  color: var(--color-pale-light);
+}
+
+/* === LIENS === */
+a {
+  color: var(--color-gold);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+a:hover {
+  color: var(--color-gold-dark);
+}
+
+a.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-gold);
+  transition: width var(--transition-medium);
+}
+
+a.link-underline:hover::after {
+  width: 100%;
+}
+
+/* === FORMULAIRES === */
+input,
+textarea,
+select {
+  width: 100%;
+  padding: var(--spacing-sm);
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(120, 93, 50, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* === ÉLÉMENTS DÉCORATIFS === */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  margin: var(--spacing-lg) 0;
+}
+
+.accent-line {
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-gold);
+  margin: var(--spacing-md) 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--color-gold);
+  color: var(--color-pale-light);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* === UTILITAIRES === */
+.text-center {
+  text-align: center;
+}
+
+.text-gold {
+  color: var(--color-gold);
+}
+
+.text-navy {
+  color: var(--color-navy);
+}
+
+.text-pale {
+  color: var(--color-pale);
+}
+
+.bg-gold {
+  background-color: var(--color-gold);
+}
+
+.bg-navy {
+  background-color: var(--color-navy);
+}
+
+.bg-pale {
+  background-color: var(--color-pale);
+}
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+.fade-in {
+  animation: fadeIn var(--transition-slow);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
