@@ -183,4 +183,27 @@
   .swipe-hint { background: rgba(0,0,0,.35); color: #fff; padding: 6px 10px; border-radius: 999px; font-size: 12px; pointer-events: none; }
 }
 
+/* Offres orientées bénéfices */
+.offers-grid {
+  display: grid;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+@media (min-width: 900px) {
+  .offers-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.offer-card { position: relative; overflow: hidden; }
+.offer-icon { color: var(--color-gold); margin-bottom: var(--spacing-sm); }
+.offer-card h3 { margin-bottom: .25rem; }
+.offer-card p { color: var(--color-text-secondary); }
+.offer-card::after { content: ''; position: absolute; inset: 0; background: radial-gradient(600px circle at var(--x,50%) var(--y,50%), rgba(120,93,50,0.08), transparent 40%); opacity: 0; transition: opacity var(--transition-medium); pointer-events: none; }
+.offer-card:hover::after { opacity: 1; }
+
+/* Couleur de section dédiée aux offres */
+.section-offers {
+  background: linear-gradient(180deg, var(--color-pale-light) 0%, var(--color-pale) 100%);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
 

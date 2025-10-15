@@ -95,6 +95,19 @@ function setupHeroSplitInteractions() {
 
 setupHeroSplitInteractions();
 
+// Hover effect for offer cards (cursor spotlight)
+function setupOfferCardHover() {
+  document.querySelectorAll('.offer-card').forEach(card => {
+    card.addEventListener('pointermove', e => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--x', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--y', `${e.clientY - rect.top}px`);
+    });
+  });
+}
+
+setupOfferCardHover();
+
 // Navbar transparency based on hero visibility
 function setupNavbarTransparency() {
   const header = document.querySelector('.site-header');
