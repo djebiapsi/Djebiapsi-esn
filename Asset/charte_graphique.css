@@ -166,7 +166,7 @@ p {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--color-gold);
+  /* color: var(--color-gold); */
 }
 
 /* === BOUTONS === */

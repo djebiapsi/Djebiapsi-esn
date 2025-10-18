@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>L'Industrie Data-driven — Djebiapsi Corp.</title>
+    <meta name="description" content="Transformation digitale de l'industrie : naviguer dans les nouvelles réalités du marché avec la data" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="Asset/charte_graphique.css" />
+    <link rel="stylesheet" href="Asset/site.css" />
+    <style>
+      /* SCROLLYTELLING LAYOUT - NARRATIF ET PROGRESSIF */
+      
+      /* Variables pour le scrollytelling */
+      :root {
+        --scroll-progress: 0;
+        --section-height: 100vh;
+        --parallax-speed: 0.5;
+      }
+      
+      /* Hero section avec effet parallax */
+      .ddm-hero {
+        height: 100vh;
+        background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+        color: var(--color-pale);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .ddm-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23E8D9C4" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        opacity: 0.3;
+        transform: translateY(calc(var(--scroll-progress) * -50px));
+      }
+      
+      .ddm-hero-content {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+        transform: translateY(calc(var(--scroll-progress) * 30px));
+      }
+      
+      .ddm-hero h1 {
+        color: var(--color-pale);
+        font-size: clamp(3rem, 8vw, 6rem);
+        margin-bottom: var(--spacing-md);
+        line-height: 1.1;
+      }
+      
+      .ddm-hero .subtitle {
+        color: var(--color-pale-light);
+        font-size: clamp(1.25rem, 3vw, 2rem);
+        margin-bottom: var(--spacing-lg);
+        font-weight: 300;
+      }
+      
+      .ddm-hero .lead-text {
+        color: var(--color-pale-light);
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+      
+      /* Sections narratives avec hauteur viewport */
+      .narrative-section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding: var(--spacing-xxl) 0;
+      }
+      
+      .narrative-section:nth-child(even) {
+        background: var(--color-pale-light);
+      }
+      
+      
+      .narrative-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+        width: 100%;
+      }
+      
+      /* Typographie narrative */
+      .narrative-title {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        margin-bottom: var(--spacing-lg);
+        line-height: 1.2;
+        color: var(--color-text-primary);
+      }
+      
+      .narrative-subtitle {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        margin-bottom: var(--spacing-md);
+        color: var(--color-text-secondary);
+        font-weight: 400;
+      }
+      
+      .narrative-text {
+        font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+        line-height: 1.7;
+        color: var(--color-text-secondary);
+        margin-bottom: var(--spacing-lg);
+      }
+      
+      .narrative-lead {
+        font-size: clamp(1.25rem, 3vw, 1.5rem);
+        line-height: 1.6;
+        color: var(--color-text-primary);
+        font-weight: 300;
+        margin-bottom: var(--spacing-xl);
+      }
+      
+      /* Éléments visuels progressifs */
+      .visual-element {
+        position: relative;
+        margin: var(--spacing-xl) 0;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+      }
+      
+      .visual-element.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      .visual-icon {
+        font-size: clamp(3rem, 8vw, 6rem);
+        color: var(--color-gold);
+        margin-bottom: var(--spacing-md);
+        display: block;
+        text-align: center;
+      }
+      
+      .visual-number {
+        font-size: clamp(4rem, 10vw, 8rem);
+        font-weight: 800;
+        color: var(--color-gold);
+        text-align: center;
+        line-height: 1;
+        margin-bottom: var(--spacing-md);
+      }
+      
+      /* Grilles narratives fluides */
+      .narrative-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--spacing-xl);
+        margin: var(--spacing-xl) 0;
+      }
+      
+      .narrative-item {
+        padding: var(--spacing-lg);
+        border-left: 4px solid var(--color-gold);
+        background: rgba(120, 93, 50, 0.05);
+        border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        transition: all 0.6s ease;
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      
+      .narrative-item.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      .narrative-item:nth-child(even) {
+        border-left: none;
+        border-right: 4px solid var(--color-gold);
+        border-radius: var(--radius-md) 0 0 var(--radius-md);
+        transform: translateX(30px);
+      }
+      
+      .narrative-item:nth-child(even).visible {
+        transform: translateX(0);
+      }
+      
+      /* Processus narratif */
+      .process-narrative {
+        position: relative;
+        margin: var(--spacing-xxl) 0;
+      }
+      
+      .process-narrative::before {
+        content: '';
+        position: absolute;
+        left: -10px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(180deg, var(--color-gold), transparent);
+        transform: translateX(-50%);
+      }
+      
+      .process-step-narrative {
+        position: relative;
+        margin: var(--spacing-xl) 0;
+        padding-left: 60px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
+      
+      .process-step-narrative.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      .process-step-narrative::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 20px;
+        width: 20px;
+        height: 20px;
+        background: var(--color-gold);
+        border-radius: 50%;
+        border: 4px solid var(--color-surface);
+        box-shadow: 0 0 0 2px var(--color-gold);
+      }
+      
+      .step-number-narrative {
+        position: absolute;
+        left: -10px;
+        top: 15px;
+        width: 40px;
+        height: 40px;
+        background: var(--color-gold);
+        color: var(--color-pale-light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.2rem;
+        z-index: 2;
+      }
+      
+      /* Sections sombres avec effet parallax */
+      .dark-narrative {
+        background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+        color: var(--color-pale);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .dark-narrative::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23E8D9C4" opacity="0.1"/></pattern></defs><rect width="200" height="200" fill="url(%23dots)"/></svg>');
+        opacity: 0.3;
+        transform: translateY(calc(var(--scroll-progress) * -100px));
+      }
+      
+      .dark-narrative h2,
+      .dark-narrative h3,
+      .dark-narrative h4 {
+        color: var(--color-pale);
+      }
+      
+      .dark-narrative p {
+        color: var(--color-pale-light);
+      }
+      
+      /* Cartes (micro-situations) lisibles dans la section sombre */
+      .dark-narrative .narrative-item {
+        background: var(--color-pale);
+        border: 1px solid var(--color-gold);
+        color: var(--color-navy);
+      }
+      .dark-narrative .narrative-item h4 {
+        color: var(--color-navy);
+      }
+      .dark-narrative .narrative-item p,
+      .dark-narrative .narrative-item li {
+        color: var(--color-text-secondary);
+      }
+      
+      /* CTA avec effet de révélation */
+      .cta-narrative {
+        background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+        color: var(--color-pale-light);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .cta-narrative::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="diagonal" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 0 20 L 20 0" fill="none" stroke="%23E8D9C4" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23diagonal)"/></svg>');
+        opacity: 0.3;
+      }
+      
+      .cta-narrative h2 {
+        color: var(--color-pale-light);
+        margin-bottom: var(--spacing-md);
+      }
+      
+      .cta-narrative p {
+        color: var(--color-pale-light);
+        font-size: 1.25rem;
+        margin-bottom: var(--spacing-lg);
+      }
+      
+      .cta-narrative .btn {
+        background: var(--color-navy);
+        color: var(--color-pale-light);
+        border-color: var(--color-navy);
+      }
+      
+      /* Animation uniquement si on ajoute scroll-reveal au bouton */
+      .cta-narrative .btn.scroll-reveal { 
+        transform: translateY(20px); 
+        opacity: 0; 
+        transition: all 0.8s ease; 
+      }
+      .cta-narrative .btn.scroll-reveal.visible { 
+        transform: translateY(0); 
+        opacity: 1; 
+      }
+
+      /* Boutons améliorés */
+      .btn-elevated {
+        box-shadow: var(--shadow-medium);
+        border-width: 2px;
+      }
+      .btn-elevated:hover {
+        box-shadow: var(--shadow-luxury);
+        transform: translateY(-2px);
+      }
+
+      /* CTA du héro */
+      .hero-cta {
+        margin-top: var(--spacing-lg);
+        display: flex;
+        justify-content: center;
+      }
+      
+      .cta-narrative .btn:hover {
+        background: var(--color-navy-light);
+        border-color: var(--color-navy-light);
+      }
+      
+      /* Responsive pour mobile */
+      @media (max-width: 768px) {
+        .narrative-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .process-narrative::before {
+          left: 20px;
+        }
+        
+        .process-step-narrative {
+          padding-left: 50px;
+        }
+        
+        .step-number-narrative {
+          left: 10px;
+        }
+      }
+      
+      /* Animations de scroll */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+      }
+      
+      .scroll-reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header is-solid">
+      <div class="container">
+        <nav class="nav">
+          <a href="index.html" class="brand">Djebiapsi Corp.</a>
+          <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+          <ul class="nav-list">
+            <li><a href="index.html#mission">Mission</a></li>
+            <li><a href="index.html#solutions">Solutions</a></li>
+            <li><a href="index.html#impacts">Résultats</a></li>
+            <li><a href="index.html#clients">Clients</a></li>
+            <li><a href="index.html#pourquoi">Pourquoi</a></li>
+            <li><a href="index.html#contact-cta">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO NARRATIF -->
+      <section class="ddm-hero">
+        <div class="ddm-hero-content">
+          <h1>L'Industrie Data-driven</h1>
+          <p class="subtitle">Naviguer dans les nouvelles réalités du marché avec la data</p>
+          <p class="lead-text">L'industrie manufacturière traverse une transformation profonde. Dans ce nouveau monde, les entreprises font face à des réalités de marché nouvelles et de plus en plus exigeantes, où la data devient le moteur de la compétitivité et de l'innovation.</p>
+          <div class="hero-cta">
+            <a href="https://calendly.com/kouatebryan38/30min" target="_blank" rel="noopener" class="btn btn-large btn-elevated">Demander un audit data gratuit</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ENTRÉE DANS UNE NOUVELLE ÈRE -->
+      <section class="narrative-section">
+        <div class="narrative-content">
+          <div class="text-center scroll-reveal">
+            <span class="small-text">Transformation</span>
+            <h2 class="narrative-title">Entrer dans une nouvelle ère</h2>
+            <div class="accent-line"></div>
+          </div>
+          
+          <div class="narrative-grid">
+            <div class="narrative-item scroll-reveal">
+              <div class="visual-icon">🌱</div>
+              <h3>Durabilité</h3>
+              <p>Intégration des objectifs ESG et transition vers le net zéro dans les processus industriels.</p>
+            </div>
+            <div class="narrative-item scroll-reveal">
+              <div class="visual-icon">👥</div>
+              <h3>Conscience Humaine</h3>
+              <p>Place de l'humain au cœur de l'industrie 5.0 et développement des compétences data.</p>
+            </div>
+            <div class="narrative-item scroll-reveal">
+              <div class="visual-icon">🏭</div>
+              <h3>Industrie 5.0</h3>
+              <p>Collaboration homme-machine et personnalisation de masse dans les chaînes de production.</p>
+            </div>
+            <div class="narrative-item scroll-reveal">
+              <div class="visual-icon">⚡</div>
+              <h3>Technologie</h3>
+              <p>Automatisation intelligente, analytics prédictifs et écosystèmes hyperconnectés.</p>
+            </div>
+          </div>
+
+          <div class="text-center scroll-reveal">
+            <p class="narrative-lead">Les processus deviennent de plus en plus automatisés, soutenus par des analytics intelligents. L'hyper-personnalisation pilote les lignes de production, et l'informatique cognitive accélère l'innovation. Les manufacturiers travaillent dans des écosystèmes hyperconnectés axés sur l'utilisation de la data et des analytics pour répondre proactivement aux besoins clients et offrir des services innovants et des produits durables dans une économie circulaire.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- DÉFIS ACTUELS -->
+      <section class="narrative-section dark-narrative">
+        <div class="narrative-content">
+          <div class="text-center scroll-reveal">
+            <span class="small-text">Enjeux</span>
+            <h2 class="narrative-title">Les défis à relever</h2>
+            <div class="accent-line"></div>
+          </div>
+
+          <div class="visual-element scroll-reveal">
+            <div class="visual-icon">📊</div>
+            <h3 class="narrative-subtitle">Complexité des écosystèmes data</h3>
+            <p class="narrative-text">Les environnements manufacturiers sont complexes et multicouches. Les chaînes de valeur sont multifacettes, avec de multiples systèmes sources, d'innombrables data lakes, différents processus, langages et droits d'accès.</p>
+            <div class="narrative-grid" style="margin-top: var(--spacing-lg)">
+              <div class="narrative-item scroll-reveal">
+                <h4>Situations vécues en atelier</h4>
+                <ul class="narrative-text" style="margin-top: var(--spacing-sm);">
+                  <li>Des données de production dispersées entre Excel, machines et ERP.</li>
+                  <li>Des rapports de maintenance consolidés avec 2 à 3 semaines de retard.</li>
+                  <li>Des écarts de qualité détectés trop tard faute de visibilité en temps réel.</li>
+                </ul>
+              </div>
+              <div class="narrative-item scroll-reveal">
+                <h4>Décision et pilotage</h4>
+                <ul class="narrative-text" style="margin-top: var(--spacing-sm);">
+                  <li>Des décisions basées sur l’intuition plutôt que des faits partagés.</li>
+                  <li>Des arbitrages Capex/Opex sans traçabilité des hypothèses.</li>
+                  <li>Des indicateurs contradictoires selon les services (production, qualité, finance).</li>
+                </ul>
+              </div>
+              <div class="narrative-item scroll-reveal">
+                <h4>Chaîne d’approvisionnement</h4>
+                <ul class="narrative-text" style="margin-top: var(--spacing-sm);">
+                  <li>Stocks sécurité surdimensionnés par manque de prévision fiable.</li>
+                  <li>Retards fournisseurs non corrélés aux données de consommation réelle.</li>
+                  <li>Transport planifié sans optimisation conjointe coût/empreinte carbone.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="process-narrative">
+            <div class="process-step-narrative scroll-reveal">
+              <div class="step-number-narrative">1</div>
+              <h4>Stratégie & Vision</h4>
+              <p>Les initiatives ne sont souvent pas alignées avec les objectifs business ou la vision globale de l'organisation.</p>
+            </div>
+            <div class="process-step-narrative scroll-reveal">
+              <div class="step-number-narrative">2</div>
+              <h4>Gouvernance Data</h4>
+              <p>Absence d'un Chief Data Officer habilité et manque de priorité accordée à la data comme atout stratégique.</p>
+            </div>
+            <div class="process-step-narrative scroll-reveal">
+              <div class="step-number-narrative">3</div>
+              <h4>Alignement IT/Business</h4>
+              <p>Manque d'adhésion organisationnelle et d'alignement entre les dirigeants IT et business.</p>
+            </div>
+            <div class="process-step-narrative scroll-reveal">
+              <div class="step-number-narrative">4</div>
+              <h4>Silos Data</h4>
+              <p>Les silos data à travers les personnes, processus et machines rendent difficile l'accès et l'intégration de toutes les données pertinentes.</p>
+            </div>
+            <div class="process-step-narrative scroll-reveal">
+              <div class="step-number-narrative">5</div>
+              <h4>Compétences & Talents</h4>
+              <p>Les employés n'ont pas les compétences data requises et il n'y a pas d'accès aux talents spécialisés (data engineers ou scientists).</p>
+            </div>
+            <div class="process-step-narrative scroll-reveal">
+              <div class="step-number-narrative">6</div>
+              <h4>Culture & Écosystème</h4>
+              <p>Les enablers technologiques et la culture nécessaires pour soutenir les efforts data-driven manquent, et l'approche écosystème pour le partage de données est encore naissante.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NIVEAUX D'INDUSTRIE DATA-DRIVEN (MATURITÉ) -->
+      <section class="narrative-section">
+        <div class="narrative-content">
+          <div class="text-center scroll-reveal">
+            <span class="small-text">Maturité</span>
+            <h2 class="narrative-title">Les niveaux d’industrie data‑driven</h2>
+            <div class="accent-line"></div>
+          </div>
+
+          <div class="visual-element scroll-reveal">
+            <h3 class="narrative-subtitle">Des paliers progressifs vers la décision augmentée</h3>
+            <p class="narrative-lead">La maturité data‑driven s’acquiert par étapes. Chaque palier consolide la qualité, l’intégration et l’usage des données jusqu’à opérer à l’échelle avec des décisions augmentées par l’IA.</p>
+          </div>
+          
+          <div class="process-narrative">
+            <div class="process-step-narrative scroll-reveal">
+              <div class="step-number-narrative">1</div>
+              <h4>Niveau 1 — Basique (Descriptif)</h4>
+              <p>Données dispersées et silotées, reporting rétrospectif, faible gouvernance. Les analyses répondent au « que s’est‑il passé ? ».</p>
+            </div>
+            <div class="process-step-narrative scroll-reveal">
+              <div class="step-number-narrative">2</div>
+              <h4>Niveau 2 — Standardisé (Diagnostique)</h4>
+              <p>Qualité et collecte structurées, automatisation ETL, BI de base et data catalog. Simplification du processus d’acquisition de données et premiers KPIs fiables pour répondre au « pourquoi ».</p>
+            </div>
+            <div class="process-step-narrative scroll-reveal">
+              <div class="step-number-narrative">3</div>
+              <h4>Niveau 3 — Intégré temps réel (Opérationnel)</h4>
+              <p>Self‑service BI, IPA, intégration métier, jumeaux numériques et supervision en temps réel pour optimiser l’exécution des opérations.</p>
+            </div>
+            <div class="process-step-narrative scroll-reveal">
+              <div class="step-number-narrative">4</div>
+              <h4>Niveau 4 — Prédictif (Anticipatif)</h4>
+              <p>Machine learning, analytics avancés, maintenance prédictive et recommandations. Passage du « que va‑t‑il se passer ? » au « que devons‑nous faire ? ».</p>
+            </div>
+            <div class="process-step-narrative scroll-reveal">
+              <div class="step-number-narrative">5</div>
+              <h4>Niveau 5 — Augmenté à l’échelle (Autonome)</h4>
+              <p>IA à l’échelle, décisions augmentées, optimisation continue pilotée par la valeur et la durabilité, gouvernance solide et culture data‑first.</p>
+            </div>
+        </div>
+         <div class="text-center mt-md">
+           <a href="https://calendly.com/kouatebryan38/30min" target="_blank" rel="noopener" class="btn btn-large btn-elevated scroll-reveal">Demander un audit data gratuit</a>
+         </div>
+        </div>
+      </section>
+
+      <!-- 4 ÉTAPES POUR DEVENIR DATA-DRIVEN -->
+      <section class="narrative-section dark-narrative">
+        <div class="narrative-content">
+          <div class="text-center scroll-reveal">
+            <span class="small-text">Méthodologie</span>
+            <h2 class="narrative-title">4 étapes pour devenir une organisation data-driven</h2>
+            <div class="accent-line"></div>
+          </div>
+
+          <div class="process-narrative">
+            <div class="process-step-narrative scroll-reveal">
+              <div class="step-number-narrative">1</div>
+              <h3>Aligner votre stratégie data sur la valeur business</h3>
+              <p class="narrative-text">Construire et exécuter une stratégie data complète alignée avec vos valeurs et objectifs business. Accélérer les résultats en alignant stratégiquement les initiatives sur la valeur business.</p>
+              <ul style="text-align: left; margin-top: var(--spacing-md);">
+                <li>Vision & Roadmap</li>
+                <li>Quelle est la valeur business à atteindre ?</li>
+              </ul>
+            </div>
+            <div class="process-step-narrative scroll-reveal">
+              <div class="step-number-narrative">2</div>
+              <h3>Gérer vos données comme un atout stratégique</h3>
+              <p class="narrative-text">Assurer que les données sont adaptées à leur usage et alignées aux objectifs business nécessite une approche informée à travers le cycle de vie complet des données.</p>
+              <ul style="text-align: left; margin-top: var(--spacing-md);">
+                <li>Collecte & Capture</li>
+                <li>Nettoyage & Traitement</li>
+                <li>Stockage & Sécurité</li>
+                <li>Propriété & Accès</li>
+              </ul>
+            </div>
+            <div class="process-step-narrative scroll-reveal">
+              <div class="step-number-narrative">3</div>
+              <h3>Élever votre intelligence d'entreprise</h3>
+              <p class="narrative-text">L'intelligence d'entreprise est la capacité de votre organisation à transformer des données contextuelles en insights actionnables qui génèrent de la valeur business.</p>
+              <ul style="text-align: left; margin-top: var(--spacing-md);">
+                <li>Business Intelligence</li>
+                <li>Analytics Avancés & IA</li>
+                <li>Niveau de maturité analytics</li>
+              </ul>
+            </div>
+            <div class="process-step-narrative scroll-reveal">
+              <div class="step-number-narrative">4</div>
+              <h3>Assurer la préparation organisationnelle</h3>
+              <p class="narrative-text">Un état d'esprit data-first est critique pour construire la confiance et assurer le ROI sur votre investissement data.</p>
+              <ul style="text-align: left; margin-top: var(--spacing-md);">
+                <li>Organisation, Leadership & Culture</li>
+                <li>Littératie Data</li>
+                <li>Attention C-level</li>
+                <li>Comportement data-driven encouragé</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BÉNÉFICES DE LA TRANSFORMATION -->
+      <section class="narrative-section">
+        <div class="narrative-content">
+          <div class="text-center scroll-reveal">
+            <span class="small-text">Résultats</span>
+            <h2 class="narrative-title">Bénéfices de la transformation en entreprise data-driven</h2>
+            <div class="accent-line"></div>
+          </div>
+
+          <div class="narrative-grid">
+            <div class="narrative-item scroll-reveal">
+              <div class="visual-icon">🚀</div>
+              <h3>Équipes hautement productives</h3>
+              <p>Construire des équipes qui travaillent avec les données les plus perspicaces et supportives en temps réel, permettant une vraie innovation et pollinisation croisée.</p>
+            </div>
+            <div class="narrative-item scroll-reveal">
+              <div class="visual-icon">🔮</div>
+              <h3>Anticipation proactive</h3>
+              <p>Aller au-delà de l'optimisation des opérations pour prévoir le changement et répondre proactivement avec un fort alignement business et IT.</p>
+            </div>
+            <div class="narrative-item scroll-reveal">
+              <div class="visual-icon">💡</div>
+              <h3>Insights véritables</h3>
+              <p>Gagner une vraie perspicacité à travers de vastes magasins de données pour créer de nouveaux services, produits et façons de faire des affaires.</p>
+            </div>
+            <div class="narrative-item scroll-reveal">
+              <div class="visual-icon">🌐</div>
+              <h3>Connexion écosystème</h3>
+              <p>Se connecter avec des écosystèmes externes et profiter d'avantages gagnant-gagnant avec de nouveaux partenaires parfois improbables.</p>
+            </div>
+            <div class="narrative-item scroll-reveal">
+              <div class="visual-icon">🔄</div>
+              <h3>Amélioration continue</h3>
+              <p>Réfléchir, apprendre et s'améliorer continuellement pour réaliser votre vision et démontrer des résultats mesurables.</p>
+            </div>
+            <div class="narrative-item scroll-reveal">
+              <div class="visual-icon">🌱</div>
+              <h3>Pratiques responsables</h3>
+              <p>Embrasser des pratiques et processus responsables et transparents, adopter des technologies qui révèlent les données pertinentes pour agir et démontrer les progrès de durabilité.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMMENT NOUS POUVONS VOUS AIDER -->
+      <section class="narrative-section cta-narrative" id="passer-a-laction">
+        <div class="narrative-content">
+          <div class="text-center scroll-reveal">
+            <span class="small-text">Accompagnement</span>
+            <h2 class="narrative-title">Comment nous pouvons vous aider</h2>
+            <p class="narrative-lead">Nos solutions et services vous aident à gagner les insights data stratégiques et opérationnels nécessaires pour assurer une croissance soutenue, des réductions de coûts et l'excellence opérationnelle—tout en prenant les actions appropriées pour évoluer vers un avenir vert et durable.</p>
+            <div class="accent-line"></div>
+          </div>
+          
+          <div class="text-center scroll-reveal">
+            <p class="narrative-text">Contrairement aux autres offres axées uniquement sur la technologie, l'approche Data-Driven Manufacturing de Djebiapsi Corp. rassemble stratégie, gouvernance et l'aspect humain du changement tout en implémentant des solutions data pour assurer le succès.</p>
+            <p class="narrative-text">Nous fournissons une combinaison puissante d'expertise industrielle, data, technologique et de gestion du changement, construisant une relation avec vous localement tout en vous fournissant l'échelle d'un partenaire vraiment global.</p>
+          </div>
+
+          <div class="text-center scroll-reveal" style="margin-top: var(--spacing-xl)">
+            <h3 class="narrative-subtitle">Passez à l’action</h3>
+            <p class="narrative-text">Prêt à améliorer votre maturité data ?</p>
+            <div class="mt-md">
+              <a href="https://calendly.com/kouatebryan38/30min" target="_blank" rel="noopener" class="btn btn-large btn-elevated scroll-reveal">Demander un audit data gratuit</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p class="small-text">© <span id="year"></span> Djebiapsi Corp. — Excellence Data, IA & BI</p>
+      </div>
+    </footer>
+
+    <script src="Asset/site.js"></script>
+    <script>
+      // SCROLLYTELLING JAVASCRIPT
+      
+      // Gestion du parallax et des animations de scroll
+      function initScrollytelling() {
+        const scrollElements = document.querySelectorAll('.scroll-reveal');
+        const narrativeItems = document.querySelectorAll('.narrative-item');
+        const processSteps = document.querySelectorAll('.process-step-narrative');
+        
+        // Intersection Observer pour les animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              
+              // Animation séquentielle pour les éléments de processus
+              if (entry.target.classList.contains('process-step-narrative')) {
+                const index = Array.from(processSteps).indexOf(entry.target);
+                setTimeout(() => {
+                  entry.target.style.animationDelay = `${index * 0.2}s`;
+                }, 100);
+              }
+              
+              // Animation séquentielle pour les éléments narratifs
+              if (entry.target.classList.contains('narrative-item')) {
+                const index = Array.from(narrativeItems).indexOf(entry.target);
+                setTimeout(() => {
+                  entry.target.style.animationDelay = `${index * 0.15}s`;
+                }, 100);
+              }
+            }
+          });
+        }, observerOptions);
+        
+        // Observer tous les éléments
+        scrollElements.forEach(el => observer.observe(el));
+        narrativeItems.forEach(el => observer.observe(el));
+        processSteps.forEach(el => observer.observe(el));
+      }
+      
+      // Gestion du parallax pour le hero
+      function initParallax() {
+        let ticking = false;
+        
+        function updateParallax() {
+          const scrolled = window.pageYOffset;
+          const parallax = scrolled * 0.5;
+          
+          // Mise à jour des variables CSS pour le parallax
+          document.documentElement.style.setProperty('--scroll-progress', scrolled / window.innerHeight);
+          
+          // Parallax pour les éléments de fond
+          const heroElements = document.querySelectorAll('.ddm-hero::before, .dark-narrative::before');
+          heroElements.forEach(el => {
+            if (el) {
+              el.style.transform = `translateY(${parallax * 0.3}px)`;
+            }
+          });
+          
+          ticking = false;
+        }
+        
+        function requestTick() {
+          if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+          }
+        }
+        
+        window.addEventListener('scroll', requestTick);
+      }
+      
+      // Animation des chiffres (compteurs)
+      function animateCounters() {
+        const counters = document.querySelectorAll('.visual-number');
+        
+        const counterObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const target = entry.target;
+              const finalNumber = parseInt(target.textContent);
+              let currentNumber = 0;
+              const increment = finalNumber / 60; // Animation sur 1 seconde à 60fps
+              
+              const timer = setInterval(() => {
+                currentNumber += increment;
+                if (currentNumber >= finalNumber) {
+                  target.textContent = finalNumber;
+                  clearInterval(timer);
+                } else {
+                  target.textContent = Math.floor(currentNumber);
+                }
+              }, 16);
+              
+              counterObserver.unobserve(target);
+            }
+          });
+        }, { threshold: 0.5 });
+        
+        counters.forEach(counter => counterObserver.observe(counter));
+      }
+      
+      // Navigation fluide entre sections
+      function initSmoothNavigation() {
+        const navLinks = document.querySelectorAll('a[href^="#"]');
+        
+        navLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          });
+        });
+      }
+      
+      // Indicateur de progression de lecture
+      function initReadingProgress() {
+        const progressBar = document.createElement('div');
+        progressBar.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 0%;
+          height: 3px;
+          background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
+          z-index: 1000;
+          transition: width 0.3s ease;
+        `;
+        document.body.appendChild(progressBar);
+        
+        function updateProgress() {
+          const scrollTop = window.pageYOffset;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const scrollPercent = (scrollTop / docHeight) * 100;
+          progressBar.style.width = scrollPercent + '%';
+        }
+        
+        window.addEventListener('scroll', updateProgress);
+      }
+      
+      // Initialisation au chargement de la page
+      document.addEventListener('DOMContentLoaded', () => {
+        initScrollytelling();
+        initParallax();
+        animateCounters();
+        initSmoothNavigation();
+        initReadingProgress();
+        
+        // Animation d'entrée pour le hero
+        const heroContent = document.querySelector('.ddm-hero-content');
+        if (heroContent) {
+          setTimeout(() => {
+            heroContent.style.opacity = '1';
+            heroContent.style.transform = 'translateY(0)';
+          }, 300);
+        }
+      });
+      
+      // Gestion du redimensionnement de la fenêtre
+      window.addEventListener('resize', () => {
+        // Recalculer les positions si nécessaire
+        const scrollElements = document.querySelectorAll('.scroll-reveal');
+        scrollElements.forEach(el => {
+          if (el.classList.contains('visible')) {
+            el.style.animationDelay = '0s';
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
